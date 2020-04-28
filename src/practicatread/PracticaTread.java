@@ -166,8 +166,8 @@ class MarcoRebote extends JFrame{
                         @Override
 			public void actionPerformed(ActionEvent evento){
 				
-				t.stop();//este metodo no es recomendado, pero lo que hace es detener la ejecucion de uno de los hilos
-				
+				//t.stop();//este metodo no es recomendado, pero lo que hace es detener la ejecucion de uno de los hilos
+				t.interrupt();
 			}
 			
 		});
@@ -219,15 +219,16 @@ class MarcoRebote extends JFrame{
         public void run() {
             
             
-            for (int i=1; i<=3000; i++){
+            while(!Thread.interrupted()){
 				
 				pelota.mueve_pelota(componente.getBounds());
 				
 				componente.paint(componente.getGraphics());
                                 
                                  try{
-                        Thread.sleep(4);//esto es para dar tiempo de espera y dar sensacion de movimiento
-                        }catch(Exception e){
+                       //Thread.sleep(4);//esto es para dar tiempo de espera y dar sensacion de movimiento
+                       
+                                 }catch(Exception e){
                             System.out.println("Ocurrio un error, metodo comienza_el_juego");
                         }
 				
