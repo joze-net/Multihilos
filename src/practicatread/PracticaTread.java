@@ -1,25 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package practicatread;
 
-/**
- *
- * @author JOZE RODRIGUEZ
- */
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-
-/**
- *
- * @author JOZE RODRIGUEZ
- */
 import javax.swing.*;
 
 import java.util.*;
@@ -179,6 +160,17 @@ class MarcoRebote extends JFrame{
 			}
 			
 		});
+                
+                ponerBoton(laminaBotones, "Detener", new ActionListener(){
+			
+                        @Override
+			public void actionPerformed(ActionEvent evento){
+				
+				t.stop();//este metodo no es recomendado, pero lo que hace es detener la ejecucion de uno de los hilos
+				
+			}
+			
+		});
 		
 		add(laminaBotones, BorderLayout.SOUTH);
 	}
@@ -207,7 +199,7 @@ class MarcoRebote extends JFrame{
 			
 			Runnable r=new PelotaHilos(pelota,lamina);//se debe instanciar un objeto que implementa la interfaz Runnable
                         
-                        Thread t=new Thread(r);//tambine instanciar la clase Thread para pasarle por parametro el obj Runnable
+                        t=new Thread(r);//tambine instanciar la clase Thread para pasarle por parametro el obj Runnable
                         
                         t.start();//y ejecutar el hilo de ejecucion
 			
@@ -247,7 +239,7 @@ class MarcoRebote extends JFrame{
         private Component componente;
             
         }
-	
+	Thread t;
 	private LaminaPelota lamina;
 	
 	
